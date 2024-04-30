@@ -20,6 +20,7 @@ body {
     grid: 
         [row1-start]"top-banner" 1fr[row1-end]
         [row2-start]"bookshelf" 5fr[row2-end]
+        [row3-start]"bottom-banner"1fr[row3-end]
     ;
 }
 
@@ -74,4 +75,12 @@ body {
     padding: 10px 15px 40px 15px;
 
     background-color: blue;
+}
+
+.bottom-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: dodgerblue;
 }
