@@ -36,20 +36,20 @@
             </div>
         </div>
         <div class="bottom-banner">
-            <div class="button-container">
-                <form name="newBookForm" action="http://127.0.0.1:5500/" method="post">
-                    <label for="newBookTitle">New Book Title:</label>
-                    <input type="text" name="newBookTitle" id="newBookTitle">
-                    <label for="newBookAuthor">New Book Author:</label>
-                    <input type="text" name="newBookAuthor" id="newBookAuthor">
-                    <label for="newBookPages">New Book Page Count:</label>
-                    <input type="number" name="newBookPages" id="newBookPages">
-                    <input type="submit" value="Add Book" id="addBook">
-                </form>
-            </div>
+                <dialog class="newBookDialog">
+                    <form name="newBookForm" action="http://127.0.0.1:5500/" method="post">
+                        <label for="newBookTitle">New Book Title:</label>
+                        <input type="text" name="newBookTitle" id="newBookTitle">
+                        <label for="newBookAuthor">New Book Author:</label>
+                        <input type="text" name="newBookAuthor" id="newBookAuthor">
+                        <label for="newBookPages">New Book Page Count:</label>
+                        <input type="number" name="newBookPages" id="newBookPages">
+                        <input type="submit" value="Add Book" id="addBook">
+                    </form>
+                    <button class="closeButton">Close</button>
+                </dialog>
+                <button class="showButton">Add New Book</button>
         </div>
-
     </div>
-    
 </body>
 </html>

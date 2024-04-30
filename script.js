@@ -1,8 +1,4 @@
 const bookshelf = document.querySelector(".bookshelf");
-const addBook = document.querySelector("#addBook");
-let newBookTitle = document.querySelector("#newBookTitle");
-let newBookAuthor = document.querySelector("#newBookAuthor");
-let newBookPages = document.querySelector("#newBookPages");
 
 const myLibrary = [];
 
@@ -68,8 +64,22 @@ function addBookToLibrary(title, author, pages) {
     newPagesNum.textContent = pages;
 }
 
-addBook.addEventListener("click", submitBook, false);
+const dialog = document.querySelector(".newBookDialog");
+const showButton = document.querySelector(".newBookDialog + .showButton");
+const closeButton = document.querySelector(".newBookDialog .closeButton");
 
+showButton.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+closeButton.addEventListener("click", () => {
+  dialog.close();
+});
+
+const addBook = document.querySelector("#addBook");
+let newBookTitle = document.querySelector("#newBookTitle");
+let newBookAuthor = document.querySelector("#newBookAuthor");
+let newBookPages = document.querySelector("#newBookPages");
 
 function submitBook(event) {
     let title = newBookTitle.value;
@@ -80,4 +90,7 @@ function submitBook(event) {
     newBookTitle.value = '';
     newBookAuthor.value = '';
     newBookPages.value = '';
+    dialog.close();
 };
+
+addBook.addEventListener("click", submitBook, false);
