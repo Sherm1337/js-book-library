@@ -15,36 +15,30 @@
             </div>
         </div>
         <div class="bookshelf">
-            <div class="book-outer">
-                <div class="book-interior">
-                    <div class="book-title">
-                        <p>Test Book</p>
-                    </div>
-                    <div class="book-author">
-                        <p>By: Jake</p>
-                    </div>
-                    <div class="book-pages">
-                        <p>Length: 500 pages</p>
-                    </div>
-                    <button class="0">Delete Book</button>
-                </div>
-            </div>
         </div>      
-        <div class="bottom-banner">
                 <dialog class="newBookDialog">
-                    <form name="newBookForm" action="http://127.0.0.1:5500/" method="post">
-                        <label for="newBookTitle">New Book Title:</label>
-                        <input type="text" name="newBookTitle" id="newBookTitle">
-                        <label for="newBookAuthor">New Book Author:</label>
-                        <input type="text" name="newBookAuthor" id="newBookAuthor">
-                        <label for="newBookPages">New Book Page Count:</label>
-                        <input type="number" name="newBookPages" id="newBookPages">
-                        <input type="submit" value="Add Book" id="addBook">
-                    </form>
-                    <button class="closeButton">Close</button>
+                        <form class="newBookForm" name="newBookForm" action="http://127.0.0.1:5500/" method="post">
+                            <div class="form-container">
+                                <div class="newBookTitle">
+                                    <label for="newBookTitle">New Book Title:</label>
+                                    <input type="text" name="newBookTitle" id="newBookTitle">
+                                </div>
+                                <div class="newBookAuthor">
+                                    <label for="newBookAuthor">New Book Author:</label>
+                                    <input type="text" name="newBookAuthor" id="newBookAuthor">
+                                </div>
+                                <div class="newBookPages">
+                                    <label for="newBookPages">New Book Page Count:</label>
+                                    <input type="number" name="newBookPages" id="newBookPages">
+                                </div>
+                                <div class="addBook">
+                                    <input type="submit" value="Add Book" id="addBook">
+                                </div>
+                            </div>
+                        </form>
+                        <button class="closeButton">Cancel</button>
                 </dialog>
                 <button class="showButton">Add New Book</button>
-        </div>
     </div>
 </body>
 </html>

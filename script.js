@@ -10,7 +10,7 @@ function Book(title, author, pages, id) {
 const bookshelf = document.querySelector(".bookshelf");
 
 const theHobbit = addBookToLibrary("The Hobbit", "J.R.R Tolkien", 500);
-const bible = addBookToLibrary("Bible", "God", 1200);
+const bible = addBookToLibrary("The Bible", "Big Guy Upstairs", "A lot of");
 
 function addBookToLibrary(title, author, pages) {
     const book = new Book(title, author, pages);
