@@ -1,5 +1,3 @@
-const bookshelf = document.querySelector(".bookshelf");
-
 const myLibrary = [];
 
 function Book(title, author, pages, id) {
@@ -9,9 +7,10 @@ function Book(title, author, pages, id) {
     this.id = `${myLibrary.length}`;
 }
 
+const bookshelf = document.querySelector(".bookshelf");
+
 const theHobbit = addBookToLibrary("The Hobbit", "J.R.R Tolkien", 500);
 const bible = addBookToLibrary("Bible", "God", 1200);
-
 
 function addBookToLibrary(title, author, pages) {
     const book = new Book(title, author, pages);
@@ -60,8 +59,8 @@ function addBookToLibrary(title, author, pages) {
     })
 
     newTitleP.textContent = title;
-    newAuthorP.textContent = author;
-    newPagesNum.textContent = pages;
+    newAuthorP.textContent = "By: " + author;
+    newPagesNum.textContent = "Length: " + pages + " pages";
 }
 
 const dialog = document.querySelector(".newBookDialog");

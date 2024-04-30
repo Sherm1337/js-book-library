@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
+:root {
+    --custom-gray-blue:  #4f6d7a;
+    --custom-gray-box-shadow: #5c8090;
+    --custom-orange: #dd6e42;
+    --custom-beige: #e8dab2;
+    --custom-light-blue: #c0d6df;
+    --custom-light-gray: #eaeaea;
+}
 * {
     margin: 0;
     padding: 0;
@@ -7,80 +14,148 @@
 }
 
 body {
-    height: 100vh;
     font-size: 12px;
     font-family: roboto;
-    color: white;
-    background-color: rgb(90, 95, 195);
+    background-color: white;
+
+    color: var(--custom-beige);
 }
 
 .main-container {
-    height: 100vh;
+    height: 90vh;
+    margin: 30px;
     display: grid;
     grid: 
-        [row1-start]"top-banner" 1fr[row1-end]
+        [row1-start]"top-banner" 2fr[row1-end]
         [row2-start]"bookshelf" 5fr[row2-end]
         [row3-start]"bottom-banner"1fr[row3-end]
-    ;
+        ;
+    background-color: var(--custom-gray-blue);
 }
 
 .top-banner {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    background-color: dodgerblue;
+    box-shadow: 0 3px 10px var(--custom-gray-box-shadow);
+    margin-bottom: 20px;
 }
 
 .title {
-    font-size: 20px;
+    font-size: 40px;
     font-weight: 900;
 }
 
-.bookshelf-container {
-    display: grid;
-    grid-template-rows: 1fr 5fr;
-}
-
-.bookshelf-title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    font-size: 17px;
-    font-weight: 700;
-
-    border-bottom: solid 2px black;
-}
-
 .bookshelf {
+    grid-area: bookshelf;
+    margin: 0 20px;
     display: grid;
-    grid: 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr
+    grid: 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+.book-outer {
+    background-color: #c0d6df;
 }
 
-.book {
+.book-interior {
+    padding: 10px;
     display: grid;
     grid: 
         [row1-start]"title" 1fr[row1-end]
         [row2-start]"author" 1fr[row2-end]
         [row3-start]"pages" 1fr[row3-end]
-        [row4-start]"cover" 3fr[row4-end]
+        [row4-start]"cover" 1fr[row4-end]
     ;
-    background-color: cornflowerblue;
+    gap: 5px;
+    
     justify-items: center;
+    
+    border-radius: 0 1rem 1rem 0;
+    box-shadow: 2px 5px 5px var(--custom-gray-box-shadow);
+
+    background-color: rgb(74, 167, 130);
+
+    transform-style: preserve-3d;
+    transform: rotateY(315deg)
+               rotateZ(356deg);
 }
 
+.book {
+    padding: 10px;
+    display: grid;
+    grid: 
+        [row1-start]"title" 1fr[row1-end]
+        [row2-start]"author" 1fr[row2-end]
+        [row3-start]"pages" 1fr[row3-end]
+        [row4-start]"cover" 1fr[row4-end]
+    ;
+    gap: 5px;
+    
+    justify-items: center;
+    
+    border-radius: 0 1rem 1rem 0;
+    box-shadow: 2px 5px 5px var(--custom-gray-box-shadow);
 
-.book-img {
-    padding: 10px 15px 40px 15px;
+    background-color: rgb(74, 167, 130);
 
-    background-color: blue;
+    transform-style: preserve-3d;
+    transform: rotateY(315deg)
+               rotateZ(356deg);
+}
+
+.book-title, .book-pages {
+    padding: 5px 10px;
+    margin-bottom: 5px;
+
+    border-radius: .5rem;
+
+    font-size: 25px;
+    font-weight: 800;
+
+    background-color: var(--custom-light-blue);
+    color: var(--custom-orange);
+}
+
+.book-author {
+    display: flex;
+    font-size: 20px;
+    font-weight: 600;
+
+    align-items: center;
+
+    padding: 0 10px;
+    border-radius: .5rem;
+
+    background-color: var(--custom-gray-blue);
+}
+
+.book-pages {
+    font-size: 17px;
+    
+}
+
+.book button {
+    justify-self: right;
+    margin: 0 5px 5px 0;
+    padding: 0 5px;
+
+    font-weight: 900;
+    font-size: 15px;
+
+    border: transparent;
+    border-radius: 10px;
+
+    background-color: var(--custom-gray-blue);
+    color: #dd6e42;
+}
+.book button:hover {
+    translate: 2px -2px;
+    border: solid 2px var(--custom-gray-blue);
+    background-color: var(--custom-gray-box-shadow);
 }
 
 .bottom-banner {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    background-color: dodgerblue;
 }
