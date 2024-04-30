@@ -6,11 +6,16 @@ let newBookPages = document.querySelector("#newBookPages");
 
 const myLibrary = [];
 
-function Book(title, author, pages) {
+function Book(title, author, pages, id) {
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.id = `${myLibrary.length}`;
 }
+
+const theHobbit = addBookToLibrary("The Hobbit", "J.R.R Tolkien", 500);
+const bible = addBookToLibrary("Bible", "God", 1200);
+
 
 function addBookToLibrary(title, author, pages) {
     const book = new Book(title, author, pages);
@@ -45,9 +50,16 @@ function addBookToLibrary(title, author, pages) {
 
     const deleteButton = document.createElement("button");
     newBookDiv.appendChild(deleteButton);
+    deleteButton.classList.add(`${myLibrary.length - 1}`)
     deleteButton.textContent = "Delete Book";
 
     deleteButton.addEventListener("click", () => {
+        function CallbackFunctionToFindBookById(book) {
+            return book.id === `${deleteButton.classList.value}`;
+        }
+        const bookToDelete = myLibrary.find(CallbackFunctionToFindBookById);
+        myLibrary.splice(parseInt(bookToDelete.id), 1);
+
         deleteButton.parentNode.remove();
     })
 
