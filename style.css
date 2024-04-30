@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    font-size: 12px;
+    font-family: roboto;
+    color: white;
+    background-color: rgb(90, 95, 195);
+}
+
+.main-container {
+    height: 100vh;
+    display: grid;
+    grid: 
+        [row1-start]"top-banner" 1fr[row1-end]
+        [row2-start]"bookshelf" 5fr[row2-end]
+    ;
+}
+
+.top-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: dodgerblue;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.bookshelf-container {
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+}
+
+.bookshelf-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 17px;
+    font-weight: 700;
+
+    border-bottom: solid 2px black;
+}
+
+.bookshelf {
+    display: grid;
+    grid: 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr
+}
+
+.book {
+    display: grid;
+    grid: 
+        [row1-start]"title" 1fr[row1-end]
+        [row2-start]"author" 1fr[row2-end]
+        [row3-start]"pages" 1fr[row3-end]
+        [row4-start]"cover" 3fr[row4-end]
+    ;
+    background-color: cornflowerblue;
+    justify-items: center;
+}
+
+
+.book-img {
+    padding: 10px 15px 40px 15px;
+
+    background-color: blue;
+}
