@@ -47,6 +47,7 @@ function addBookToLibrary(title, author, pages) {
     newBookDiv.appendChild(deleteButton);
     deleteButton.classList.add(`${myLibrary.length - 1}`)
     deleteButton.textContent = "Delete Book";
+    
 
     deleteButton.addEventListener("click", () => {
         function CallbackFunctionToFindBookById(book) {
@@ -57,6 +58,19 @@ function addBookToLibrary(title, author, pages) {
 
         deleteButton.parentNode.remove();
     })
+
+    const readButton = document.createElement("button");
+    newBookDiv.appendChild(readButton);
+    readButton.setAttribute("id", "readButton");
+    readButton.textContent = "Unread";
+
+    readButton.addEventListener("click", () => {
+        if (readButton.textContent === "Unread") {
+            readButton.textContent = "Read";
+        } else if (readButton.textContent === "Read") {
+            readButton.textContent = "Unread";
+        }
+    });
 
     newTitleP.textContent = title;
     newAuthorP.textContent = "By: " + author;
