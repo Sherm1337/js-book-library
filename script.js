@@ -1,81 +1,85 @@
 const myLibrary = [];
 
-function Book(title, author, pages, id) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.id = `${myLibrary.length}`;
+class book {
+    constructor(title, author, pages) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.id = `${myLibrary.length}`;
+        myLibrary.push(this);
+    }
+
+    addBook() {
+        const bookshelf = document.querySelector(".bookshelf");
+
+        const newBookDiv = document.createElement("div");
+        newBookDiv.classList.add("book");
+        bookshelf.appendChild(newBookDiv);
+
+        const newTitleDiv = document.createElement("div");
+        newTitleDiv.classList.add("book-title");
+        newBookDiv.appendChild(newTitleDiv);
+
+        const newTitleP = document.createElement("p");
+        newTitleP.textContent = "title";
+        newTitleDiv.appendChild(newTitleP);
+
+        const newAuthorDiv = document.createElement("div");
+        newAuthorDiv.classList.add("book-author");
+        newBookDiv.appendChild(newAuthorDiv);
+
+        const newAuthorP = document.createElement("p");
+        newAuthorDiv.appendChild(newAuthorP);
+
+        const newPagesDiv = document.createElement("div");
+        newPagesDiv.classList.add("book-pages");
+        newBookDiv.appendChild(newPagesDiv);
+
+        const newPagesNum = document.createElement("p");
+        newPagesDiv.appendChild(newPagesNum);
+
+        const deleteButton = document.createElement("button");
+        newBookDiv.appendChild(deleteButton);
+        deleteButton.classList.add(`${myLibrary.length - 1}`)
+        deleteButton.textContent = "Delete Book";
+        
+
+        deleteButton.addEventListener("click", () => {
+            function CallbackFunctionToFindBookById(book) {
+                return book.id === `${deleteButton.classList.value}`;
+            }
+            const bookToDelete = myLibrary.find(CallbackFunctionToFindBookById);
+            myLibrary.splice(parseInt(bookToDelete.id), 1);
+
+            deleteButton.parentNode.remove();
+        })
+
+        const readButton = document.createElement("button");
+        newBookDiv.appendChild(readButton);
+        readButton.setAttribute("id", "readButton");
+        readButton.textContent = "Unread";
+
+        readButton.addEventListener("click", () => {
+            if (readButton.textContent === "Unread") {
+                readButton.textContent = "Read";
+            } else if (readButton.textContent === "Read") {
+                readButton.textContent = "Unread";
+            }
+        });
+
+        newTitleP.textContent = this.title;
+        newAuthorP.textContent = "By: " + this.author;
+        newPagesNum.textContent = "Length: " + this.pages + " pages";
+
+    }
 }
 
-const bookshelf = document.querySelector(".bookshelf");
+const theHobbit = new book("The Hobbit", "J.R.R Tolkien", 500);
+theHobbit.addBook();
 
-const theHobbit = addBookToLibrary("The Hobbit", "J.R.R Tolkien", 500);
-const bible = addBookToLibrary("The Bible", "Big Guy Upstairs", "A lot of");
+const bible = new book("The Bible", "Big Guy Upstairs", "A lot of");
+bible.addBook();
 
-function addBookToLibrary(title, author, pages) {
-    const book = new Book(title, author, pages);
-
-    myLibrary.push(book);
-
-    const newBookDiv = document.createElement("div");
-    newBookDiv.classList.add("book");
-    bookshelf.appendChild(newBookDiv);
-
-    const newTitleDiv = document.createElement("div");
-    newTitleDiv.classList.add("book-title");
-    newBookDiv.appendChild(newTitleDiv);
-
-    const newTitleP = document.createElement("p");
-    newTitleP.textContent = "title";
-    newTitleDiv.appendChild(newTitleP);
-
-    const newAuthorDiv = document.createElement("div");
-    newAuthorDiv.classList.add("book-author");
-    newBookDiv.appendChild(newAuthorDiv);
-
-    const newAuthorP = document.createElement("p");
-    newAuthorDiv.appendChild(newAuthorP);
-
-    const newPagesDiv = document.createElement("div");
-    newPagesDiv.classList.add("book-pages");
-    newBookDiv.appendChild(newPagesDiv);
-
-    const newPagesNum = document.createElement("p");
-    newPagesDiv.appendChild(newPagesNum);
-
-    const deleteButton = document.createElement("button");
-    newBookDiv.appendChild(deleteButton);
-    deleteButton.classList.add(`${myLibrary.length - 1}`)
-    deleteButton.textContent = "Delete Book";
-    
-
-    deleteButton.addEventListener("click", () => {
-        function CallbackFunctionToFindBookById(book) {
-            return book.id === `${deleteButton.classList.value}`;
-        }
-        const bookToDelete = myLibrary.find(CallbackFunctionToFindBookById);
-        myLibrary.splice(parseInt(bookToDelete.id), 1);
-
-        deleteButton.parentNode.remove();
-    })
-
-    const readButton = document.createElement("button");
-    newBookDiv.appendChild(readButton);
-    readButton.setAttribute("id", "readButton");
-    readButton.textContent = "Unread";
-
-    readButton.addEventListener("click", () => {
-        if (readButton.textContent === "Unread") {
-            readButton.textContent = "Read";
-        } else if (readButton.textContent === "Read") {
-            readButton.textContent = "Unread";
-        }
-    });
-
-    newTitleP.textContent = title;
-    newAuthorP.textContent = "By: " + author;
-    newPagesNum.textContent = "Length: " + pages + " pages";
-}
 
 const dialog = document.querySelector(".newBookDialog");
 const showButton = document.querySelector(".newBookDialog + .showButton");
@@ -98,7 +102,8 @@ function submitBook(event) {
     let title = newBookTitle.value;
     let author = newBookAuthor.value;
     let pages = newBookPages.value;
-    addBookToLibrary(title, author, pages);
+    let newBook = new book(title, author, pages);
+    newBook.addBook();
     event.preventDefault();
     newBookTitle.value = '';
     newBookAuthor.value = '';
